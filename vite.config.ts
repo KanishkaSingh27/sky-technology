@@ -5,6 +5,8 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  root: "./",
+  publicDir: "./client/public",
   server: {
     host: "::",
     port: 8080,
