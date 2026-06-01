@@ -39,14 +39,6 @@ const partners = [
     logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2Feac2e3aa41e944e1982495d44ff0c28d?format=webp&width=400",
   },
   {
-    name: "SKY Technology",
-    logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2F9b536fb582b44cefae0a59f3f49128e4?format=webp&width=400",
-  },
-  {
-    name: "ScanBiz",
-    logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2Fdf29810322d34d7ab130bb4ff2afaf75?format=webp&width=400",
-  },
-  {
     name: "Kodak Alaris",
     logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2F40314afb6ac04015bdda5042c67a41e0?format=webp&width=400",
   },
@@ -207,7 +199,7 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+          <div className="flex flex-wrap justify-center gap-8 items-center">
             {partners.map((p) => (
               <div
                 key={p.name}
