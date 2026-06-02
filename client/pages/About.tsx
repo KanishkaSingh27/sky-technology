@@ -136,7 +136,6 @@ export default function About() {
 
           {/* Desktop timeline line + cards */}
           <div className="relative">
-            <div className="hidden lg:block absolute top-[calc(50%-2px)] left-0 right-0 h-0.5 bg-[#DEC0B1]" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {timelineItems.map((item, i) => (
                 <div
