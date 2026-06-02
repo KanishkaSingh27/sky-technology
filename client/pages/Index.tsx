@@ -203,7 +203,7 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 items-center">
+          <div className="flex flex-wrap justify-center gap-8 items-center min-h-[180px]">
             {partners.map((p) => (
               <div
                 key={p.name}
