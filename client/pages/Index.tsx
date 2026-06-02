@@ -203,7 +203,7 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-8 items-center min-h-[180px]">
+          <div className="flex flex-wrap justify-center gap-8 items-center min-h-[680px]">
             {partners.map((p) => (
               <div
                 key={p.name}
@@ -212,7 +212,7 @@ export default function Index() {
                 <img
                   src={p.logo}
                   alt={p.name}
-                  className="h-10 w-auto object-contain max-w-[200px]"
+                  className="h-10 w-auto object-contain max-w-[600px]"
                 />
               </div>
             ))}
