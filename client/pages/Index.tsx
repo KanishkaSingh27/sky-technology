@@ -42,6 +42,10 @@ const partners = [
     name: "Kodak Alaris",
     logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2F40314afb6ac04015bdda5042c67a41e0?format=webp&width=400",
   },
+  {
+    name: "AWS",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2Ff2688ee4fca5448582bb5291861a83d0?format=webp&width=400",
+  },
 ];
 
 export default function Index() {
