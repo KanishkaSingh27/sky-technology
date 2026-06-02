@@ -212,7 +212,7 @@ export default function Index() {
                 <img
                   src={p.logo}
                   alt={p.name}
-                  className="h-10 w-auto object-contain max-w-[140px]"
+                  className="h-10 w-auto object-contain max-w-[200px]"
                 />
               </div>
             ))}
