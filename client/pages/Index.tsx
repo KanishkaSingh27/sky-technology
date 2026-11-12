@@ -204,7 +204,7 @@ export default function App() {
 
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="scanbiz.in"
+              href="https://scanbiz.in/"
               className="group relative inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-[#9A4600] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-md shadow-[#9A4600]/25 hover:shadow-lg hover:shadow-[#9A4600]/40 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-1.5">
@@ -240,7 +240,7 @@ export default function App() {
               Contact Us
             </a>
             <a
-              href="scanbiz.in"
+              href="https://scanbiz.in/"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-[#9A4600] text-center py-2.5 rounded-lg text-white font-semibold"
             >
