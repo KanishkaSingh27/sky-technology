@@ -56,7 +56,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/sky-technology/home/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-brand-light-blue text-sm leading-6 hover:text-brand-light-orange transition-colors duration-200"
