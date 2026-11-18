@@ -4,8 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, CheckCircle, ExternalLink, Loader2 } from "lucide-react";
 
-// Replace with your key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "7177e498-faa9-4272-8cca-7a8c9722ee43";
 
 const inquiryTypes = [
   "Select an inquiry type",
