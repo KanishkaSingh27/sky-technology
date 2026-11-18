@@ -1,45 +1,47 @@
 import { Link } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, Cloud, Database, Shield, Cpu, ChevronRight } from "lucide-react";
-import React, { useState, useEffect, useRef } from "react";
 import {
+  ArrowRight,
+  ScanSearch,
+  FolderLock,
+  FileCheck2,
+  Database,
+  ChevronRight,
   Menu,
   X,
-  Sparkles,
-  ExternalLink,
 } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
 
-// Services Data matching original index.tsx
+// Core Solutions & Services tailored to Sky-Tek
 const services = [
   {
-    icon: Cloud,
-    title: "Cloud Migration",
-    desc: "Seamless transition to cloud infrastructure with zero downtime and full architectural oversight.",
+    icon: ScanSearch,
+    title: "Intelligent Document Processing",
+    desc: "AI-powered data extraction, verification, and delivery from complex documents directly into your business systems.",
+  },
+  {
+    icon: FileCheck2,
+    title: "Automated Exam Solutions",
+    desc: "15+ years of expertise delivering secure Optical Mark Recognition (OMR), Computer-Based Testing (CBT), and onscreen evaluation.",
+  },
+  {
+    icon: FolderLock,
+    title: "Document Management (DMS)",
+    desc: "End-to-end digital scanning, indexing, and instant retrieval protected by 128-bit encryption and firewall security.",
   },
   {
     icon: Database,
-    title: "Data Analytics",
-    desc: "Transform raw data into strategic insights with enterprise-grade analytics platforms.",
-  },
-  {
-    icon: Cpu,
-    title: "AI/ML Integration",
-    desc: "Embed intelligent automation and machine learning into your core business workflows.",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity",
-    desc: "Tier-1 security protocols protecting your enterprise with proactive threat intelligence.",
+    title: "Cloud Data Capture & GIS",
+    desc: "High-speed automated capture for handwritten text, barcodes, and forms alongside custom GIS & digital cartography mapping.",
   },
 ];
 
-// Stats Data matching original index.tsx
+// Real Stats from Sky-Tek's offerings
 const stats = [
-  { value: "500+", label: "Global Experts" },
-  { value: "20+", label: "Years of Experience" },
-  { value: "50+", label: "Countries Served" },
-  { value: "99.9%", label: "Uptime Guarantee" },
+  { value: "15+", label: "Years of Excellence" },
+  { value: "500+", label: "Satisfied Clients" },
+  { value: "10M+", label: "Documents & Sheets Processed" },
+  { value: "99.9%", label: "Data Capture Accuracy" },
 ];
 
 // Partners Data matching original 3 partners
@@ -60,34 +62,35 @@ const partners = [
 
 export default function App() {
   const fullText =
-    "SKY Technology delivers precision-engineered cloud infrastructure, AI integration, and cybersecurity solutions to enterprises across the globe.";
+    "End-to-end Intelligent Document Processing (IDP), enterprise document management, and automated examination solutions powered by innovative technology.";
   const [displayText, setDisplayText] = useState("");
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Typewriter Effect logic
+  // Fixed Typewriter Effect (prevents 2nd-character skip in React Strict Mode)
   useEffect(() => {
     let i = 0;
+    setDisplayText("");
+
     const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText((prev) => prev + fullText.charAt(i));
-        i++;
-      } else {
+      i++;
+      setDisplayText(fullText.slice(0, i));
+      if (i >= fullText.length) {
         clearInterval(timer);
       }
     }, 20);
+
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   // Interactive Hero Canvas Mesh
   useEffect(() => {
-    
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId;
+    let animationFrameId: number;
     let width = (canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.offsetHeight || 600);
 
@@ -99,7 +102,7 @@ export default function App() {
     window.addEventListener("resize", handleResize);
 
     const mouse = { x: -1000, y: -1000, radius: 160 };
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
@@ -179,36 +182,39 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#9A4600] to-[#00687A] flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-[#9A4600]/20">
-              S
-            </div>
-            <span className="font-extrabold text-xl tracking-tight text-[#1E293B]">
-              SKY <span className="text-[#9A4600] font-normal">Technology</span>
-            </span>
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F25051e3b1b434aed9b472f7f2ac405f0%2F9b536fb582b44cefae0a59f3f49128e4?format=webp&width=800&height=1200"
+                alt="SKY Technology"
+                className="h-9 w-auto object-contain"
+              />
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-            <a href="About.tsx" className="hover:text-[#9A4600] transition-colors">
+            <Link to="/About" className="hover:text-[#9A4600] transition-colors">
               About Us
-            </a>
-            <a href="Services.tsx" className="hover:text-[#9A4600] transition-colors">
+            </Link>
+            <Link to="/Services" className="hover:text-[#9A4600] transition-colors">
               Services
-            </a>
-            <a href="Solutions.tsx" className="hover:text-[#9A4600] transition-colors">
-              Solutions
-            </a>
-            <a href="Contact.tsx" className="hover:text-[#9A4600] transition-colors">
+            </Link>
+            <Link to="/Solutions" className="hover:text-[#9A4600] transition-colors">
+              Products & Solutions
+            </Link>
+            <Link to="/Contact" className="hover:text-[#9A4600] transition-colors">
               Contact Us
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
             <a
               href="https://scanbiz.in/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-2 h-11 px-6 rounded-lg bg-[#9A4600] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-md shadow-[#9A4600]/25 hover:shadow-lg hover:shadow-[#9A4600]/40 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-1.5">
-                ScanBiz
+                ScanBiz Store
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"
@@ -227,20 +233,22 @@ export default function App() {
 
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-gray-100 px-6 py-4 flex flex-col gap-4 text-sm font-medium text-slate-700">
-            <a href="About.tsx" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/About" onClick={() => setMobileMenuOpen(false)}>
               About Us
-            </a>
-            <a href="Services.tsx" onClick={() => setMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/Services" onClick={() => setMobileMenuOpen(false)}>
               Services
-            </a>
-            <a href="Solutions.tsx" onClick={() => setMobileMenuOpen(false)}>
-              Solutions
-            </a>
-            <a href="Contact.tsx" onClick={() => setMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/Solutions" onClick={() => setMobileMenuOpen(false)}>
+              Products & Solutions
+            </Link>
+            <Link to="/Contact" onClick={() => setMobileMenuOpen(false)}>
               Contact Us
-            </a>
+            </Link>
             <a
               href="https://scanbiz.in/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-[#9A4600] text-center py-2.5 rounded-lg text-white font-semibold"
             >
@@ -265,14 +273,14 @@ export default function App() {
             {/* Animated Badge */}
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border border-[#9A4600]/20 text-[#9A4600] text-sm font-medium px-4 py-1.5 rounded-full mb-6 shadow-sm hover:scale-105 transition-transform cursor-pointer">
               <span className="w-2 h-2 rounded-full bg-[#9A4600] animate-pulse" />
-              Pioneering Digital Excellence Since 2005
+              Pioneering Capture solutions since 2005
             </div>
 
             {/* Main Headline */}
             <h1 className="font-extrabold text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight text-[#1E293B] mb-6">
-              Engineering the{" "}
-              <span className="text-[#9A4600]">Future</span> of{" "}
-              <span className="text-[#00687A]">Enterprise Cloud</span>
+              Enhance Your{" "}
+              <span className="text-[#9A4600]">Digital Transformation</span> with{" "}
+              <span className="text-[#00687A]">Sky-Tek</span>
             </h1>
 
             {/* Typewriter Subtitle */}
@@ -283,31 +291,31 @@ export default function App() {
 
             {/* Graphic CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#contact"
+              <Link
+                to="/Solutions"
                 className="group relative inline-flex items-center gap-2 h-14 px-8 rounded-xl bg-[#9A4600] text-white font-semibold text-base transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-[#9A4600]/25 hover:shadow-xl hover:shadow-[#9A4600]/40 overflow-hidden"
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                 <span className="relative z-10 flex items-center gap-2">
-                  Get Started
+                  Explore Solutions
                   <ArrowRight
                     size={18}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
-              </a>
-              <a
-                href="#about"
+              </Link>
+              <Link
+                to="/Contact"
                 className="group relative inline-flex items-center gap-2 h-14 px-8 rounded-xl bg-white/80 backdrop-blur-md border-2 border-[#00687A] text-[#00687A] font-semibold text-base transition-all duration-300 hover:bg-[#00687A] hover:text-white hover:scale-[1.03] shadow-sm hover:shadow-lg hover:shadow-[#00687A]/20 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Learn More
+                  Get Started
                   <ChevronRight
                     size={18}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -328,18 +336,19 @@ export default function App() {
           </div>
         </div>
       </section>
+
       {/* Services Grid Section */}
       <section id="services" className="py-24 bg-white relative">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-16">
             <div className="inline-flex px-4 py-1.5 rounded-full bg-[#9A4600]/10 text-[#9A4600] text-sm font-semibold uppercase tracking-widest mb-4">
-              What We Do
+              Core Capabilities
             </div>
             <h2 className="font-bold text-4xl text-[#1E293B] tracking-tight mb-4">
-              Enterprise-Grade Technology Solutions
+              Recognition, Capture & Examination Solutions
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              From cloud migration to AI integration, we deliver end-to-end technology solutions that power mission-critical operations worldwide.
+              From AI-driven document processing and encrypted DMS platforms to large-scale OMR & CBT examination systems, we streamline mission-critical workflows.
             </p>
           </div>
 
@@ -357,17 +366,18 @@ export default function App() {
                 </div>
                 <h3 className="font-bold text-xl text-[#1E293B]">{svc.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{svc.desc}</p>
-                <a
-                  href="#contact"
+                <Link
+                  to="/Solutions"
                   className="inline-flex items-center gap-1 text-[#9A4600] text-sm font-semibold mt-auto group-hover:gap-2 transition-all duration-200"
                 >
                   Learn More <ArrowRight size={14} />
-                </a>
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
+
       {/* Why SKY-TEK */}
       <section className="py-24 bg-brand-bg-blue">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
@@ -377,34 +387,51 @@ export default function App() {
                 The SKY-TEK Advantage
               </div>
               <h2 className="font-jakarta font-bold text-4xl text-brand-dark tracking-tight mb-6 leading-snug">
-                Why Global Enterprises Trust SKY Technology
+                Meeting All of Your Recognition & Data Capture Needs
               </h2>
               <p className="text-brand-brown text-lg leading-relaxed mb-10">
-                With over two decades of innovation, a 500+ strong global team, and deep partnerships with industry leaders, we architect transformations that last.
+                Backed by over 15 years of proven delivery across banking, insurance, healthcare, education, and government census projects, we turn high-volume paper and digital bottlenecks into automated workflows.
               </p>
-              <a
-                href="#about"
+              <Link
+                to="/About"
                 className="group relative inline-flex items-center gap-2 h-12 px-8 rounded-xl bg-[#00687A] text-white font-semibold text-sm transition-all duration-300 hover:scale-[1.02] shadow-md shadow-[#00687A]/20 hover:shadow-lg hover:shadow-[#00687A]/35 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Our Story{" "}
+                  About Sky Technology{" "}
                   <ArrowRight
                     size={16}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
               {[
-                { label: "Cost-Effective", desc: "Premium enterprise quality without prohibitive overhead." },
-                { label: "Experienced Team", desc: "Senior architects and certified engineers with deep expertise." },
-                { label: "B2B Reliability", desc: "Tier-1 security and robust uptime for mission-critical operations." },
-                { label: "Agile Innovation", desc: "Rapid deployment cycles keeping your business ahead of the curve." },
+                {
+                  label: "15+ Years Exam Expertise",
+                  desc: "Trusted OMR, CBT, and onscreen answer-sheet evaluation with strict confidentiality.",
+                },
+                {
+                  label: "128-Bit Data Security",
+                  desc: "Encrypted document repositories and firewall protection for sensitive institutional records.",
+                },
+                {
+                  label: "Authorized Hardware Hub",
+                  desc: "Official Kodak scanner reseller via SCANBiZ.in plus Evolis smart & PVC ID card printers.",
+                },
+                {
+                  label: "AI + Human Accuracy",
+                  desc: "Hybrid crowdsourced data capture cutting processing turnarounds from days to hours.",
+                },
               ].map((item) => (
-                <div key={item.label} className="bg-white rounded-xl p-6 shadow-[0_2px_16px_0_rgba(0,0,0,0.08)]">
-                  <h4 className="font-jakarta font-bold text-base text-brand-dark mb-2">{item.label}</h4>
+                <div
+                  key={item.label}
+                  className="bg-white rounded-xl p-6 shadow-[0_2px_16px_0_rgba(0,0,0,0.08)]"
+                >
+                  <h4 className="font-jakarta font-bold text-base text-brand-dark mb-2">
+                    {item.label}
+                  </h4>
                   <p className="text-brand-brown text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
@@ -418,10 +445,10 @@ export default function App() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-0">
             <div className="inline-flex px-4 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-medium uppercase tracking-widest mb-4">
-              Our Partners
+              Our Technology Partners
             </div>
             <h2 className="font-jakarta font-bold text-3xl text-brand-dark tracking-tight">
-              Trusted by Industry Leaders
+              Backed by Global Capture & Cloud Leaders
             </h2>
           </div>
 
@@ -447,14 +474,14 @@ export default function App() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(51,168,196,0.12)_0%,_transparent_70%)]" />
         <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10 text-center">
           <h2 className="font-jakarta font-extrabold text-4xl lg:text-5xl text-white tracking-tight mb-6">
-            Ready to Transform Your Enterprise?
+            Ready to Automate Your Workflows?
           </h2>
           <p className="text-brand-peach text-lg max-w-2xl mx-auto mb-10">
-            Partner with SKY Technology for cloud-native transformation that delivers measurable results from day one.
+            Connect with Sky Technology for consultation, or shop Kodak scanners directly on SCANBiZ.in.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              to="/contact"
+              to="/Contact"
               className="inline-flex items-center gap-2 h-14 px-8 rounded-lg bg-brand-orange text-white font-semibold text-base transition-all duration-200 hover:opacity-90 hover:scale-[1.02] hover:shadow-lg"
             >
               Contact Us <ArrowRight size={18} />
@@ -465,7 +492,7 @@ export default function App() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 h-14 px-8 rounded-lg border-2 border-brand-teal-btn text-brand-teal-btn font-semibold text-base transition-all duration-200 hover:bg-brand-teal-btn hover:text-white hover:shadow-lg"
             >
-              Visit ScanBiz
+              Shop on SCANBiZ.in
             </a>
           </div>
         </div>
