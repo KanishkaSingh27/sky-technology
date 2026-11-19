@@ -22,7 +22,7 @@ const services = [
   {
     icon: FileCheck2,
     title: "Automated Exam Solutions",
-    desc: "15+ years of expertise delivering secure Optical Mark Recognition (OMR), Computer-Based Testing (CBT), and onscreen evaluation.",
+    desc: "20+ years of expertise delivering secure Optical Mark Recognition (OMR), Computer-Based Testing (CBT), and onscreen evaluation.",
   },
   {
     icon: FolderLock,
@@ -38,7 +38,7 @@ const services = [
 
 // Real Stats from Sky-Tek's offerings
 const stats = [
-  { value: "15+", label: "Years of Excellence" },
+  { value: "20+", label: "Years of Excellence" },
   { value: "500+", label: "Satisfied Clients" },
   { value: "10M+", label: "Documents & Sheets Processed" },
   { value: "99.9%", label: "Data Capture Accuracy" },
@@ -409,7 +409,7 @@ export default function App() {
             <div className="grid grid-cols-2 gap-6">
               {[
                 {
-                  label: "15+ Years Exam Expertise",
+                  label: "20+ Years Exam Expertise",
                   desc: "Trusted OMR, CBT, and onscreen answer-sheet evaluation with strict confidentiality.",
                 },
                 {
